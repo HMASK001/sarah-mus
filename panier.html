@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Panier - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- <link rel="stylesheet" href="css/all.css"> -->
+    <style>
+        /* --- STYLES SECTION PANIER (HAUT) --- */
+        .cart-page-container {
+            max-width: 1200px;
+            margin: 30px auto 50px auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            padding: 0 4%;
+        }
+        .cart-title {
+            font-size: 18px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .continue-shopping {
+            font-size: 12px;
+            color: #555;
+            text-decoration: none;
+        }
+        .cart-table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.2fr;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+        .cart-item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 0.2fr;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-product-info {
+            display: flex;
+            gap: 15px;
+        }
+        .cart-product-info img {
+            width: 70px;
+            height: 90px;
+            object-fit: cover;
+        }
+        .cart-product-details h4 {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+        .cart-product-details p {
+            font-size: 12px;
+            color: #777;
+            margin: 2px 0;
+        }
+        .qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            width: fit-content;
+        }
+        .qty-control button {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .qty-control span {
+            padding: 0 10px;
+            font-size: 13px;
+        }
+        .btn-delete {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-delete:hover { color: #000; }
+        
+        .cart-actions-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .promo-box {
+            display: flex;
+            gap: 10px;
+        }
+        .promo-box input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            font-size: 13px;
+            width: 160px;
+        }
+        .btn-outline {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 18px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        /* Récapitulatif haut */
+        .cart-summary-sidebar {
+            background-color: #f9f8f6;
+            padding: 30px;
+            border: 1px solid #f1eeea;
+            height: fit-content;
+        }
+        .sidebar-title {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+        .btn-scroll-down {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* --- BARRE DE RÉASSURANCE --- */
+        .reassurance-bar {
+            background-color: #f7f7f7;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 25px 0;
+            margin: 40px 0;
+        }
+        .reassurance-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+        .reassurance-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        .reassurance-item i {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .reassurance-item span {
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .reassurance-item p {
+            color: #777;
+            margin-top: 3px;
+        }
+
+        /* --- STYLES SECTION COMMANDE (BAS) --- */
+        .checkout-section {
+            padding: 20px 0 60px 0;
+        }
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 50px;
+            padding: 0 4%;
+        }
+        .checkout-title-main {
+            font-size: 24px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        .checkout-left h3 {
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 25px 0 15px 0;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        .form-group.row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group.row input, .form-group.row select { flex: 1; }
+        .checkout-left input[type="text"], 
+        .checkout-left input[type="tel"], 
+        .checkout-left select {
+            width: 100%;
+            padding: 11px 15px;
+            border: 1px solid #dcd6cf;
+            background-color: #fff;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        .form-checkbox {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+        .form-actions {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn-primary {
+            background-color: #43464c;
+            color: #fff;
+            border: none;
+            padding: 14px 40px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Récapitulatif bas */
+        .order-summary-box {
+            background-color: #f7f5f2;
+            padding: 30px;
+            border: 1px solid #eae5e0;
+            height: fit-content;
+        }
+        .summary-items {
+            max-height: 240px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .mini-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e8e3dd;
+        }
+        .mini-item img { width: 50px; height: 65px; object-fit: cover; }
+        .mini-details h4 { font-size: 13px; font-weight: 400; margin: 0; }
+        .mini-details p { font-size: 11px; color: #777; margin: 2px 0; }
+        .mini-price { margin-left: auto; font-size: 13px; font-weight: 500; }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .summary-row.total {
+            border-top: 1px solid #d8d2cb;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i> RECHERCHER</div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count" id="header-cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="nouveautes.html">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= PARTIE 1 : MON PANIER (HAUT) ================= -->
+    <div class="cart-page-container">
+        <div>
+            <div class="cart-title">
+                <h2 id="cart-title-count">Mon Panier (0)</h2>
+                <a href="boutique.html" class="continue-shopping">← Continuer mes achats</a>
+            </div>
+            
+            <div class="cart-table-header">
+                <span>Produit</span>
+                <span>Prix</span>
+                <span>Quantité</span>
+                <span>Total</span>
+                <span></span>
+            </div>
+
+            <!-- Liste dynamique des produits du panier (Haut) -->
+            <div id="main-cart-items">
+                <!-- Généré par JavaScript -->
+            </div>
+
+            <div class="cart-actions-row">
+                <div class="promo-box">
+                    <input type="text" placeholder="Code promo">
+                    <button class="btn-outline">Appliquer</button>
+                </div>
+                <button class="btn-outline" onclick="viderLePanier()"><i class="fa-solid fa-trash-can"></i> Vider le panier</button>
+            </div>
+        </div>
+
+        <!-- Bloc Récapitulatif Haut -->
+        <div class="cart-summary-sidebar">
+            <h3 class="sidebar-title">Récapitulatif</h3>
+            <div class="summary-row">
+                <span id="summary-items-text">Sous-total (0 articles)</span>
+                <span id="sidebar-subtotal">0.00 $</span>
+            </div>
+            <div class="summary-row">
+                <span>Livraison</span>
+                <span id="sidebar-shipping" style="color: green;">OFFERT</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="sidebar-total">0.00 $</span>
+            </div>
+            <p style="font-size: 11px; color:#888; margin-top:10px;">Taxes incluses. Frais d'expédition calculés à l'étape suivante.</p>
+            
+            <button class="btn-scroll-down" onclick="document.getElementById('commande-ancrage').scrollIntoView({behavior: 'smooth'});">
+                <i class="fa-solid fa-lock"></i> Passer la commande
+            </button>
+        </div>
+    </div>
+
+    <!-- ================= BARRE DE RÉASSURANCE ================= -->
+    <div class="reassurance-bar">
+        <div class="reassurance-inner">
+            <div class="reassurance-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <span>Livraison Rapide</span>
+                <p>Partout à Kinshasa</p>
+            </div>
+            <div class="reassurance-item">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+                <span>Retours Faciles</span>
+                <p>Sous 14 jours</p>
+            </div>
+            <div class="reassurance-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <span>Paiement Sécurisé</span>
+                <p>100% espèces à la livraison</p>
+            </div>
+            <div class="reassurance-item">
+                <i class="fa-solid fa-headset"></i>
+                <span>Service Client</span>
+                <p>À votre écoute</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PARTIE 2 : COMMANDE MODIFIÉE (BAS) ================= -->
+    <section class="checkout-section" id="commande-ancrage">
+        <div class="checkout-container">
+            
+            <div class="checkout-left">
+                <h2 class="checkout-title-main">Commande</h2>
+                <p style="font-size: 12px; color:#888; margin-top:-20px; margin-bottom:25px;">Panier > Informations > Paiement en espèces</p>
+                
+                <form action="https://formsubmit.co/Wmynner@gmail.com" method="POST" id="checkout-form">
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/saraheko.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="Articles_Commandes" id="hidden-cart-details">
+                    <input type="hidden" name="Total_Facture" id="hidden-cart-total">
+
+                    <h3>Informations Personnelles</h3>
+                    <div class="form-group row">
+                        <input type="text" name="Prenom" placeholder="Prénom" required>
+                        <input type="text" name="Nom" placeholder="Nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="Telephone" placeholder="Téléphone" required>
+                    </div>
+
+                    <h3>Adresse de livraison</h3>
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <select name="Ville" required>
+                            <option value="Kinshasa" selected>Kinshasa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <select name="Commune" required>
+                            <option value="" disabled selected>Commune</option>
+                            <option value="Bandalungwa">Bandalungwa</option>
+                            <option value="Barumbu">Barumbu</option>
+                            <option value="Bumbu">Bumbu</option>
+                            <option value="Gombe">Gombe</option>
+                            <option value="Kalamu">Kalamu</option>
+                            <option value="Kasa-Vubu">Kasa-Vubu</option>
+                            <option value="Kimbanseke">Kimbanseke</option>
+                            <option value="Kinshasa">Kinshasa</option>
+                            <option value="Kintambo">Kintambo</option>
+                            <option value="Kisenso">Kisenso</option>
+                            <option value="Lemba">Lemba</option>
+                            <option value="Limete">Limete</option>
+                            <option value="Lingwala">Lingwala</option>
+                            <option value="Makala">Makala</option>
+                            <option value="Maluku">Maluku</option>
+                            <option value="Masina">Masina</option>
+                            <option value="Matete">Matete</option>
+                            <option value="Ngaba">Ngaba</option>
+                            <option value="Ngaliema">Ngaliema</option>
+                            <option value="Ngiri-Ngiri">Ngiri-Ngiri</option>
+                            <option value="Nsele">Nsele</option>
+                            <option value="Mont-Ngafula">Mont-Ngafula</option>
+                            <option value="Selembao">Selembao</option>
+                            <option value="Kinshasa-commune">Commune de Kinshasa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 15px;">
+                        <input type="text" name="Quartier" placeholder="Quartier" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <input type="text" name="Avenue" placeholder="Avenue" required>
+                        <input type="text" name="Numero_Parcelle" placeholder="N°" style="max-width: 120px;" required>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="diff-billing" checked disabled>
+                        <label for="diff-billing">Paiement en espèces à la livraison disponible sur toutes les communes</label>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="index.html" class="back-to-cart"><i class="fa-solid fa-arrow-left"></i> Retour au panier</a>
+                        <button type="submit" class="btn-primary">CONTINUER VERS LE PAIEMENT</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- BLOC RÉCAPITULATIF COMMANDE (DROITE) -->
+            <div class="checkout-right">
+                <div class="order-summary-box">
+                    <div class="box-header">
+                        <h3>VOTRE COMMANDE <a href="boutique.html" class="modify-link">MODIFIER</a></h3>
+                    </div>
+                    <div class="summary-items" id="summary-items-list">
+                        <!-- Les mini-items s'insèrent ici -->
+                    </div>
+                    <div class="summary-row">
+                        <span>Sous-total</span>
+                        <span id="subtotal-val">0.00 $</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Livraison</span>
+                        <span id="shipping-val" style="color: green; font-weight: 500;">OFFERT</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total-val">0.00 $</span>
+                    </div>
+                    <p style="font-size: 11px; color: #888; margin-top: 8px;">Taxes incluses.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="ma-case-panier"> 
+    <h3>Mon Panier</h3>
+
+    <div id="conteneur-panier">
+        <p>Chargement du panier...</p>
+    </div>
+</div>
+
+    </section>
+
+    <!-- Script de synchronisation globale du panier -->
+    <script src="app.js"></script>
+    <script src="panier.js"></script>
+</body>
+</html>

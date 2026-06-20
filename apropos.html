@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="sarahmus.png">
+    <link rel="stylesheet" href="css/all.css"> <!-- Dossier de dessins local -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Styles spécifiques pour la page À Propos */
+        .about-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 4%;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-hero h1 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .about-hero .subtitle {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-section.reverse {
+            direction: rtl; /* Inverse l'ordre image/texte sur grand écran */
+        }
+        .about-section.reverse .about-text {
+            direction: ltr; /* Remet le texte dans le bon sens de lecture */
+        }
+
+        .about-text h2 {
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .about-text p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 450px;
+            background-color: #f5f5f5;
+            background-size: cover;
+            background-position: center;
+            border-radius: 2px;
+        }
+
+        /* Section Nos Valeurs */
+        .values-container {
+            border-top: 1px solid #eee;
+            padding-top: 5px;
+            margin-top: 40px;
+        }
+
+        .values-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .value-item i {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .value-item h3 {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .value-item p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-section, .about-section.reverse {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                direction: ltr;
+            }
+            .about-section.reverse .about-text {
+                direction: ltr;
+            }
+            .about-image {
+                height: 300px;
+            }
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header / Navigation (Identique aux autres pages) -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="./nouveautes.html">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="apropos.html" class="active">À PROPOS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur Principal -->
+    <div class="about-container">
+        
+        <!-- En-tête de la page -->
+        <div class="about-hero">
+            <h1>Notre Histoire</h1>
+            <p class="subtitle">L'essence de l'élégance minimaliste et du confort au quotidien.</p>
+        </div>
+
+        <!-- Section 1 : L'origine -->
+        <section class="about-section">
+            <div class="about-text">
+                <h2>Comment tout a commencé</h2>
+                <p>Née de la passion pour le design épuré et les silhouettes fluides, <strong>Sarah mus</strong> a été créée pour redéfinir la garde-robe moderne. Notre concept est simple : proposer des vêtements intemporels qui allient parfaitement la sophistication et le confort absolu.</p>
+                <p>Nous croyons que la mode ne doit pas être compliquée. Chaque pièce que nous concevons est pensée pour s'adapter naturellement à votre quotidien, vous permettant de vous sentir confiante, libre et élégante en toutes circonstances.</p>
+            </div>
+            <!-- Tu peux remplacer l'URL par une de tes images de shooting -->
+            <div class="about-image" style="background-image: url('chemise.jpg');"></div>
+        </section>
+
+        <!-- Section 2 : Notre Philosophie -->
+        <section class="about-section reverse">
+            <div class="about-text">
+                <h2>Le Minimalisme au Cœur du Design</h2>
+                <p>Chez Sarah mus, nous fuyons le superflu. Nos collections mettent l'accent sur la pureté des lignes, la subtilité des palettes de couleurs neutres (les beiges chaleureux, les marrons profonds, les noirs intemporels) et le soin rigoureux apporté aux coupes.</p>
+                <p>Chaque tissu est sélectionné avec une attention particulière pour assurer un tombé impeccable et une douceur remarquable sur la peau. Acheter chez nous, c'est choisir des vêtements faits pour durer au-delà des tendances éphémères.</p>
+            </div>
+            <div class="about-image" style="background-image: url('robe.jpg');"></div>
+        </section>
+
+        <!-- Section 3 : Les Valeurs de la Marque -->
+        <section class="values-container">
+            <h2 class="values-title">Nos Engagements</h2>
+            
+            <div class="values-grid">
+                <!-- Valeur 1 -->
+                <div class="value-item">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h3>Qualité des coupes</h3>
+                    <p>Des designs étudiés pour offrir une liberté de mouvement totale et une allure flatteuse.</p>
+                </div>
+                <!-- Valeur 2 -->
+                <div class="value-item">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>Simplicité Volontaire</h3>
+                    <p>Une esthétique minimaliste pour concevoir des associations de tenues faciles et élégantes.</p>
+                </div>
+                <!-- Valeur 3 -->
+                <div class="value-item">
+                    <i class="fa-regular fa-face-smile-beam"></i>
+                    <h3>À votre écoute</h3>
+                    <p>Un service client dédié pour vous accompagner et vous conseiller dans le choix de vos tailles.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Liaison du script unique app.js pour le compteur panier -->
+    <script src="app.js"></script>
+</body>
+</html>

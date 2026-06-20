@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="sarahmus.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/all.css"> <!-- Ton dossier de dessins local -->
+    <style>
+        /* Styles spécifiques basés sur la maquette 1000879508.png */
+        .collections-intro {
+            text-align: center;
+            margin: 50px auto 40px auto;
+            max-width: 600px;
+        }
+
+        .collections-intro h1 {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .collections-intro hr {
+            width: 35px;
+            border: none;
+            height: 1px;
+            background-color: #cbbaae;
+            margin: 0 auto 15px auto;
+        }
+
+        .collections-intro p {
+            font-size: 14px;
+            color: #555;
+            letter-spacing: 0.3px;
+        }
+
+        .collections-container {
+            max-width: 1300px;
+            margin: 0 auto 60px auto;
+            padding: 0 4%;
+        }
+
+        /* Grille principale : 3 colonnes sur PC, s'adapte aux images horizontales */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Cartes de collection */
+        .collection-card {
+            position: relative;
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f2ebe4;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+
+        /* Superposition claire/ombrée optionnelle pour améliorer la lisibilité du texte si besoin */
+        .collection-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.15); /* Voile léger pour calquer l'ambiance douce de la maquette */
+            z-index: 1;
+        }
+
+        .collection-content {
+            position: relative;
+            z-index: 2;
+            max-width: 220px;
+        }
+
+        .collection-content h2 {
+            font-size: 18px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .collection-content p {
+            font-size: 12px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn-discover {
+            display: inline-block;
+            background: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            font-size: 11px;
+            padding: 10px 24px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .btn-discover:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* Liens responsives */
+        @media (max-width: 1024px) {
+            .collections-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 650px) {
+            .collections-grid { grid-template-columns: 1fr; }
+            .collection-card { height: 300px; padding: 25px; }
+            .collections-intro h1 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header / Navigation (Sans profil ni favoris) -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="nouveautes.html">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html" class="active">COLLECTIONS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Zone d'introduction -->
+    <div class="collections-intro">
+        <h1>Collections</h1>
+        <hr>
+        <p>Des collections pensées pour chaque moment de votre vie.</p>
+    </div>
+
+    <!-- Conteneur de la Grille des Collections -->
+    <div class="collections-container">
+        <div class="collections-grid">
+            
+            <!-- 1. PRINTEMPS ÉTÉ -->
+            <div class="collection-card" style="background-image: url('chemise.jpg');">
+                <div class="collection-content">
+                    <h2>Printemps Été 2024</h2>
+                    <p>Des matières légères et des tons lumineux pour une saison ensoleillée.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- 2. AUTOMNE HIVER -->
+            <div class="collection-card" style="background-image: url('robe.jpg');">
+                <div class="collection-content">
+                    <h2>Automne Hiver 2024</h2>
+                    <p>Des pièces chaudes et raffinées pour vous accompagner tout l'hiver.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- 3. MODE MODESTE -->
+            <div class="collection-card" style="background-image: url('robelongue.jpg');">
+                <div class="collection-content">
+                    <h2>Mode Modeste</h2>
+                    <p>Élégance et pudeur dans des pièces confortables et modernes.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- 4. ESSENTIELS -->
+            <div class="collection-card" style="background-image: url('debardeur.jpg');">
+                <div class="collection-content">
+                    <h2>Essentiels</h2>
+                    <p>Des basiques indispensables, à porter et reporter au quotidien.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- 5. CÉRÉMONIE -->
+            <div class="collection-card" style="background-image: url('blazer.jpg');">
+                <div class="collection-content">
+                    <h2>Cérémonie</h2>
+                    <p>Des tenues élégantes pour vos plus beaux moments.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- 6. ACCESSOIRES -->
+            <div class="collection-card" style="background-image: url('trench.jpg');"> <!-- Utilise ton image de sac ici -->
+                <div class="collection-content">
+                    <h2>Accessoires</h2>
+                    <p>Les petits détails qui font toute la différence.</p>
+                    <a href="boutique.html" class="btn-discover">Découvrir</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script global app.js pour maintenir l'état dynamique du panier -->
+    <script src="app.js"></script>
+</body>
+</html>

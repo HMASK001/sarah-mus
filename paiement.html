@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/all.css"> <!-- Ton dossier de dessins local -->
+    <style>
+        .checkout-container {
+            max-width: 1100px;
+            margin: 40px auto 60px auto;
+            padding: 0 4%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+        }
+
+        .checkout-title {
+            font-size: 22px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-section {
+            background: #fff;
+            margin-bottom: 30px;
+        }
+
+        /* Options de paiement épurées */
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .payment-option {
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .payment-option:hover {
+            border-color: #000;
+            background-color: #fafafa;
+        }
+
+        .payment-option input {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .payment-option label {
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .payment-option i {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Résumé de commande à droite */
+        .order-summary-box {
+            background: #fdfcfb;
+            border: 1px solid #f3f0ec;
+            padding: 30px;
+            border-radius: 2px;
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-top: 15px;
+        }
+
+        .btn-validate-order {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .btn-validate-order:hover {
+            background: #333;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="nouveantes.html">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="checkout-container">
+        
+        <!-- Options de paiement (Gauche) -->
+        <div class="checkout-forms">
+            <div class="form-section">
+                <h2 class="checkout-title">Choisir votre mode de paiement</h2>
+                
+                <div class="payment-methods">
+                    
+                    <!-- Option 3 : Cash on Delivery -->
+                    <div class="payment-option">
+                        <input type="radio" id="pay-cod" name="payment_method" value="cod">
+                        <label for="pay-cod">
+                            <i class="fa-solid fa-hand-holding-dollar"></i> Paiement en espèces à la livraison
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Résumé financier (Droite) -->
+        <div class="order-summary-box">
+            <h2 class="checkout-title" style="border: none; margin-bottom: 15px; padding: 0;">Votre Commande</h2>
+            
+            <div class="summary-row">
+                <span>Sous-total</span>
+                <span id="checkout-subtotal">0,00 $</span>
+            </div>
+            <div class="summary-row">
+                <span>Frais de livraison</span>
+                <span id="checkout-shipping">Gratuit</span>
+            </div>
+            
+            <div class="summary-row total">
+                <span>Total à régler</span>
+                <span id="checkout-total">0,00 $</span>
+            </div>
+
+            <button class="btn-validate-order" onclick="finaliserLaCommande()">Confirmer et Payer</button>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Lecture du panier pour mettre les bons totaux sur l'écran final
+        document.addEventListener("DOMContentLoaded", function() {
+            const panier = JSON.parse(localStorage.getItem("panier")) || [];
+            let subtotal = 0;
+
+            panier.forEach(item => {
+                subtotal += item.price * item.quantity;
+            });
+
+            let shipping = 0;
+            if (subtotal < 70 && subtotal > 0) {
+                shipping = 9.90; 
+                document.getElementById("checkout-shipping").innerText = shipping.toFixed(2) + " $";
+            } else {
+                document.getElementById("checkout-shipping").innerText = "Gratuit";
+            }
+
+            let total = subtotal + shipping;
+
+            document.getElementById("checkout-subtotal").innerText = subtotal.toFixed(2) + " $";
+            document.getElementById("checkout-total").innerText = total.toFixed(2) + " $";
+        });
+
+        function finaliserLaCommande() {
+            alert("Merci pour votre confiance ! Votre commande chez Sarah mus a été validée avec succès.");
+            localStorage.removeItem("panier"); 
+            window.location.href = "saraheko.html"; 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* Réinitialisation globale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', 'Didot', 'Georgia', serif; /* Typographie élégante */
+}
+
+body {
+    background-color: #fcfbfa;
+    color: #333;
+}
+
+/* Bandeau Supérieur */
+.top-bar {
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.header-icons i {
+    font-size: 18px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.cart-icon {
+    display: inline-block;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: #000;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding-bottom: 15px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+nav ul li a.active {
+    border-bottom: 1px solid #000;
+    padding-bottom: 4px;
+}
+
+/* Hero Section (Image principale de la maquette) */
+.hero {
+    height: 80vh;
+    background-image: url(''); /* Remplace par ton image style 1000870341.png */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 8%;
+}
+
+.hero-content {
+    max-width: 450px;
+}
+
+.hero-content .subtitle {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #8c7662;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+.btn-hero {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Engagements */
+.features {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f5f2ed;
+    padding: 30px 5%;
+    text-align: left;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.feature-item i {
+    font-size: 24px;
+    color: #444;
+}
+
+.feature-item h4 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+
+.feature-item p {
+    font-size: 11px;
+    color: #777;
+}
+
+/* Catégories */
+.categories-section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.categories-section h2 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.category-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.category-overlay h3 {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.btn-category {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer {
+    background-color: #ded6cf;
+    padding: 40px 5%;
+    text-align: center;
+    border-top: 1px solid #d0c5bc;
+}
+
+.footer-logo {
+    font-family: 'Caveat', cursive, serif; /* Pour l'effet écriture manuscrite du bas */
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.footer-text p {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.footer-socials {
+    margin-top: 20px;
+}
+
+.footer-socials a {
+    color: #000;
+    font-size: 18px;
+    margin: 0 15px;
+}

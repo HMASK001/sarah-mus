@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveautés - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="sarahmus.png">
+    <link rel="stylesheet" href="css/all.css"> <!-- Ton dossier de dessins local -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Styles spécifiques basés sur la maquette 1000879457.png */
+        .news-banner {
+            max-width: 1300px;
+            margin: 0 auto 30px auto;
+            background-color: #e5dbd0; /* Teinte beige de fond de la bannière */
+            background-image: url('banner-news.jpg'); /* Remplace par ton image de bannière */
+            background-size: cover;
+            background-position: right center;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            box-sizing: border-box;
+        }
+
+        .banner-content {
+            max-width: 450px;
+        }
+
+        .banner-content h1 {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .banner-content hr {
+            width: 40px;
+            border: none;
+            height: 1px;
+            background-color: #000;
+            margin-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .banner-content p {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .news-container {
+            max-width: 1300px;
+            margin: 0 auto 60px auto;
+            padding: 0 4%;
+        }
+
+        .news-bar-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 produits par ligne comme sur l'image */
+            gap: 25px;
+        }
+
+        /* Badge NOUVEAU sur l'image */
+        .image-wrapper {
+            position: relative;
+            height: 340px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f5f5f5;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            font-size: 10px;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Formulaire d'options intégré à la carte produit */
+        .product-options {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: #fdfcfb;
+            padding: 8px;
+            border-radius: 2px;
+            border: 1px solid #f3f0ec;
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+        }
+
+        .option-row select, .option-row input {
+            padding: 3px;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-size: 11px;
+        }
+
+        .option-row input {
+            width: 40px;
+            text-align: center;
+        }
+
+        .add-to-cart-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .btn-shop-add {
+            background: #000;
+            color: #fff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .btn-shop-add:hover {
+            background: #444;
+        }
+
+        @media (max-width: 1024px) {
+            .news-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .news-grid { grid-template-columns: 1fr; }
+            .news-banner { height: 220px; }
+            .banner-content h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header / Navigation (Sans profil ni favoris) -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="nouveantes.html" class="active">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Grande Bannière Nouveautés -->
+    <div class="news-banner">
+        <div class="banner-content">
+            <h1>Nouveautés</h1>
+            <hr>
+            <p>Découvrez nos dernières pièces sélectionnées avec soin pour sublimer votre style.</p>
+        </div>
+    </div>
+
+    <!-- Grille des Nouveautés -->
+    <div class="news-container">
+        <div class="news-bar-info">
+            <span>48 NOUVEAUTÉS</span>
+            <div>Trier par : <b>Plus récents</b></div>
+        </div>
+
+        <div class="news-grid">
+            
+            <!-- PRODUIT 1 : Chemise fluide -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('chemise.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Chemise fluide</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>XS</option><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Beige</option><option>Marron</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="24.90" style="font-size: 13px; font-weight: bold;">24,90 $</span>
+                        <button class="btn-shop-add" data-id="n-1" data-image="chemise.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 2 : Robe ceinturée -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('robe.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Robe ceinturée</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>XS</option><option selected>S</option><option>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Marron</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="32.90" style="font-size: 13px; font-weight: bold;">32,90 $</span>
+                        <button class="btn-shop-add" data-id="n-2" data-image="robe.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 3 : Gilet en maille -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('gilet.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Gilet en maille</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Blanc cassé</option><option>Gris</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="26.90" style="font-size: 13px; font-weight: bold;">26,90 $</span>
+                        <button class="btn-shop-add" data-id="n-3" data-image="gilet.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 4 : Pantalon large -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('pantalon.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Pantalon large</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>34</option><option selected>36</option><option>38</option><option>40</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Taupe</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="27.90" style="font-size: 13px; font-weight: bold;">27,90 $</span>
+                        <button class="btn-shop-add" data-id="n-4" data-image="pantalon.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 5 : Veste blazer -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('blazer.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Veste blazer</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Beige</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="39.90" style="font-size: 13px; font-weight: bold;">39,90 $</span>
+                        <button class="btn-shop-add" data-id="n-5" data-image="blazer.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 6 : Chemise rayée -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('rayee.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Chemise rayée</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>XS</option><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Bleu ciel</option><option>Blanc</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="22.90" style="font-size: 13px; font-weight: bold;">22,90 $</span>
+                        <button class="btn-shop-add" data-id="n-6" data-image="rayee.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 7 : Robe longue -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('robelongue.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Robe longue</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Sable</option><option>Kaki</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="34.90" style="font-size: 13px; font-weight: bold;">34,90 $</span>
+                        <button class="btn-shop-add" data-id="n-7" data-image="robelongue.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 8 : Top satin -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('topsatin.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Top satin</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option selected>XS</option><option>S</option><option>M</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Chocolat</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="19.90" style="font-size: 13px; font-weight: bold;">19,90 $</span>
+                        <button class="btn-shop-add" data-id="n-8" data-image="topsatin.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 9 : Débardeur côtelé -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('debardeur.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Débardeur côtelé</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Blanc</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="12.90" style="font-size: 13px; font-weight: bold;">12,90 $</span>
+                        <button class="btn-shop-add" data-id="n-9" data-image="debardeur.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 10 : Ensemble lin -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('ensemblelin.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Ensemble lin</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Naturel</option><option>Kaki</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="44.90" style="font-size: 13px; font-weight: bold;">44,90 $</span>
+                        <button class="btn-shop-add" data-id="n-10" data-image="ensemblelin.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 11 : Trench long -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('trench.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Trench long</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option>S</option><option selected>M</option><option>L</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Camel</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="54.90" style="font-size: 13px; font-weight: bold;">54,90 $</span>
+                        <button class="btn-shop-add" data-id="n-11" data-image="trench.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT 12 : Foulard en soie -->
+            <div class="product-card">
+                <div class="image-wrapper" style="background-image: url('foulard.jpg');">
+                    <span class="badge-new">Nouveau</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="prod-title" style="font-size: 13px; font-weight: 400; margin-top: 8px;">Foulard en soie</h3>
+                    <div class="product-options">
+                        <div class="option-row"><label>Taille :</label><select class="prod-size"><option selected>Unique</option></select></div>
+                        <div class="option-row"><label>Couleur :</label><select class="prod-color"><option selected>Marron</option><option>Noir</option></select></div>
+                        <div class="option-row"><label>Quantité :</label><input type="number" class="prod-qty" value="1" min="1"></div>
+                    </div>
+                    <div class="add-to-cart-box">
+                        <span class="prod-price" data-raw-price="14.90" style="font-size: 13px; font-weight: bold;">14,90 $</span>
+                        <button class="btn-shop-add" data-id="n-12" data-image="foulard.jpg"><i class="fa-solid fa-bag-shopping"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Ton script global app.js pour faire le lien automatique vers panier.html -->
+    <script src="app.js"></script>
+</body>
+</html>

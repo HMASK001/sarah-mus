@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sarah mus</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="shortcut icon" href="sarahmus.png">
+    <link rel="stylesheet" href="css/all.css"> <!-- Dossier de dessins local -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Styles spécifiques pour la page Contact */
+        .contact-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 4%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2, .contact-form h2 {
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .contact-info p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .info-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-item i {
+            font-size: 18px;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        .info-item h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        /* Formulaire */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .btn-submit {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 35px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #333;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin: 40px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau de livraison -->
+    <div class="top-bar">
+        <p>LIVRAISON OFFERTE DÈS 70$ D'ACHAT <i class="fa-solid fa-truck"></i></p>
+    </div>
+
+    <!-- Header / Navigation (Identique à boutique.html, sans profil ni favoris) -->
+    <header>
+        <div class="header-main">
+            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="logo"><a href="index.html" style="color: inherit; text-decoration: none;">Sarah mus</a></div>
+            <div class="header-icons">
+                <div class="cart-icon">
+                    <a href="panier.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">ACCUEIL</a></li>
+                <li><a href="nouveautes.html">NOUVEAUTÉS</a></li>
+                <li><a href="boutique.html">BOUTIQUE</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="apropos.html">À PROPOS</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteneur Principal de la page Contact -->
+    <div class="contact-container">
+        
+        <!-- Colonne Gauche : Infos de contact -->
+        <div class="contact-info">
+            <h2>Contactez-nous</h2>
+            <p>Une question sur une taille, une commande ou nos collections ? Notre équipe est à votre écoute et vous répondra sous 24 à 48 heures ouvrées.</p>
+            
+            <div class="info-details">
+                <div class="info-item">
+                    <i class="fa-regular fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contact@sarahmus.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-regular fa-clock"></i>
+                    <div>
+                        <h4>Horaires du service client</h4>
+                        <p>Du lundi au vendredi : 9h00 - 18h00</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <div>
+                        <h4>Retours & Échanges</h4>
+                        <p>Vous disposez d'un délai de 14 jours après réception pour nous renvoyer un article.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonne Droite : Formulaire -->
+        <div class="contact-form">
+            <h2>Envoyer un message</h2>
+            <form id="form-contact-client">
+                <div class="form-group">
+                    <label for="name">Nom Complet</label>
+                    <input type="text" id="name" required placeholder="Votre nom">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse Email</label>
+                    <input type="email" id="email" required placeholder="votre@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Sujet</label>
+                    <input type="text" id="subject" required placeholder="Ex: Suivi de commande, Question produit...">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="6" required placeholder="Écrivez votre message ici..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Envoyer</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Liaison du script app.js pour que le compteur du panier fonctionne aussi ici ! -->
+    <script src="app.js"></script>
+    <script>
+        // Petit script rapide pour gérer la soumission du formulaire
+        document.getElementById('form-contact-client').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Merci pour votre message ! Notre équipe vous contactera très rapidement.");
+            e.target.reset(); // Vide le formulaire
+        });
+    </script>
+</body>
+</html>
