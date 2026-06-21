@@ -164,3 +164,120 @@ form.addEventListener('submit', async (e) => {
         submitBtn.disabled = false;
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    afficherLePanier();
+});
+
+function afficherLePanier() {
+    // On récupère les éléments HTML du panier
+    const conteneurArticles = document.getElementById('articles-panier'); // Crée cet ID dans ton HTML là où vont les lignes
+    const totalSousTotal = document.getElementById('sous-total-prix');   // ID pour le sous-total
+    const totalFinal = document.getElementById('total-prix');           // ID pour le prix final
+    
+    const panier = JSON.parse(localStorage.getItem('panier_sarah_mus')) || [];
+    
+    if (!conteneurArticles) return; // Sécurité si on n'est pas sur la bonne page
+
+    // Si le panier est vide
+    if (panier.length === 0) {
+        conteneurArticles.innerHTML = `<p class="panier-vide">Votre panier est vide.</p>`;
+        if(totalSousTotal) totalSousTotal.textContent = "0.00 $";
+        if(totalFinal) totalFinal.textContent = "0.00 $";
+        return;
+    }
+
+    // Si le panier contient des articles, on construit le HTML
+    let htmlGenere = '';
+    let calculGlobal = 0;
+
+    panier.forEach((article, index) => {
+        let totalLigne = article.prix * article.quantite;
+        calculGlobal += totalLigne;
+
+        htmlGenere += `
+            <div class="panier-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="${article.image}" alt="${article.nom}" style="width: 70px; height: 90px; object-fit: cover; border-radius: 4px;">
+                    <div>
+                        <h4 style="margin: 0 0 5px 0;">${article.nom}</h4>
+                        <p style="margin: 0; font-size: 14px; color: #666;">Taille: ${article.taille} | Couleur: ${article.couleur}</p>
+                        <p style="margin: 5px 0 0 0; font-weight: bold;">${article.prix.toFixed(2)} $</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span>Qté: <strong>${article.quantite}</strong></span>
+                    <button onclick="supprimerArticle(${index})" style="background: none; border: none; color: red; cursor: pointer; font-size: 14px;">Supprimer</button>
+                </div>
+            </div>
+        `;
+    });
+
+    conteneurArticles.innerHTML = htmlGenere;
+    
+    // Mise à jour des prix sur la droite (Récapitulatif)
+    if(totalSousTotal) totalSousTotal.textContent = `${calculGlobal.toFixed(2)} $`;
+    if(totalFinal) totalFinal.textContent = `${calculGlobal.toFixed(2)} $`;
+
+    // IMPORTANT : On injecte aussi la version texte du panier dans le formulaire masqué Web3Forms pour le proprio !
+    const champMasqueFormulaire = document.getElementById('hidden-cart-details');
+    if (champMasqueFormulaire) {
+        let resumeTexte = panier.map(item => `${item.nom} (Taille: ${item.taille}, Qté: ${item.quantite})`).join(', ');
+        champMasqueFormulaire.value = resumeTexte;
+    }
+}
+
+// Fonction pour enlever un vêtement du panier
+window.supprimerArticle = function(index) {
+    let panier = JSON.parse(localStorage.getItem('panier_sarah_mus')) || [];
+    panier.splice(index, 1); // Retire l'élément sélectionné
+    localStorage.setItem('panier_sarah_mus', JSON.stringify(panier));
+    
+    // On redessine le panier et on met à jour le header
+    afficherLePanier();
+    
+    // Code pour mettre à jour le compteur du header s'il existe sur cette page
+    const totalArticles = panier.reduce((total, article) => total + article.quantite, 0);
+    const compteurs = document.querySelectorAll('.nb-panier, #cart-count');
+    compteurs.forEach(compteur => { compteur.textContent = `(${totalArticles})`; });
+};
+// Fonction pour vider l'intégralité du panier d'un seul coup
+window.viderLePanier = function() {
+    // 1. On demande une petite confirmation pour éviter les erreurs
+    if (confirm("Êtes-vous sûr de vouloir vider tout votre panier ?")) {
+        
+        // 2. On efface la clé du panier dans le localStorage
+        localStorage.removeItem('panier_sarah_mus');
+        
+        // 3. On relance l'affichage pour que l'écran affiche directement "Votre panier est vide"
+        if (typeof afficherLePanier === "function") {
+            afficherLePanier();
+        } else {
+            // Si la fonction n'est pas trouvée, on recharge simplement la page
+            location.reload();
+        }
+        
+        // 4. On remet instantanément les petits compteurs (0) du header à zéro
+        const compteurs = document.querySelectorAll('.nb-panier, #cart-count');
+        compteurs.forEach(compteur => {
+            compteur.textContent = `(0)`;
+        });
+    }
+};
+// Cette fonction compte ce qu'il y a dans le localStorage et change le (0) ou (1) du menu
+function mettreAJourCompteurHeader() {
+    // On récupère le panier actuel
+    const panier = JSON.parse(localStorage.getItem('panier_sarah_mus')) || [];
+    
+    // On calcule le nombre total d'articles
+    const totalArticles = panier.reduce((total, article) => total + article.quantite, 0);
+    
+    // On cherche l'élément du menu dans le HTML (ex: .nb-panier ou #cart-count)
+    const compteurs = document.querySelectorAll('.nb-panier, #cart-count'); 
+    
+    compteurs.forEach(compteur => {
+        compteur.textContent = `(${totalArticles})`;
+    });
+}
+
+// Emplacement magique : Dès qu'une page HTML s'ouvre, elle met à jour son compteur !
+document.addEventListener('DOMContentLoaded', mettreAJourCompteurHeader);

@@ -226,3 +226,72 @@ form.addEventListener('submit', async (e) => {
         submitBtn.disabled = false;
     }
 });
+// 1. Fonction pour initialiser et récupérer le panier actuel
+function obtenirPanier() {
+    const panier = localStorage.getItem('panier_sarah_mus');
+    return panier ? JSON.parse(panier) : [];
+}
+
+// 2. Fonction pour sauvegarder le panier et mettre à jour les compteurs visuels
+function sauvegarderPanier(panier) {
+    localStorage.setItem('panier_sarah_mus', JSON.stringify(panier));
+    mettreAJourCompteurHeader();
+}
+
+// 3. Fonction qui compte le nombre total d'articles et change le (0) dans le menu
+function mettreAJourCompteurHeader() {
+    const panier = obtenirPanier();
+    const totalArticles = panier.reduce((total, article) => total + article.quantite, 0);
+    
+    // On cherche l'élément du menu (ex: "Panier (0)")
+    // Remplace '.nb-panier' par la classe ou l'ID exact de ton compteur dans ton HTML
+    const compteurs = document.querySelectorAll('.nb-panier, #cart-count'); 
+    compteurs.forEach(compteur => {
+        compteur.textContent = `(${totalArticles})`;
+    });
+}
+
+// 4. Fonction appelée lors du clic sur "Ajouter au panier"
+function ajouterAuPanier(nom, prix, image, taille = 'M', couleur = 'Unique') {
+    let panier = obtenirPanier();
+    
+    // On vérifie si l'article existe déjà avec la même taille et couleur
+    const articleExistant = panier.find(item => item.nom === nom && item.taille === taille && item.couleur === couleur);
+    
+    if (articleExistant) {
+        articleExistant.quantite += 1;
+    } else {
+        panier.push({
+            nom: nom,
+            prix: parseFloat(prix),
+            image: image,
+            taille: taille,
+            couleur: couleur,
+            quantite: 1
+        });
+    }
+    
+    sauvegarderPanier(panier);
+    alert(`Ajouté au panier : ${nom}`);
+}
+
+// Charger le compteur du menu dès que la page s'ouvre
+document.addEventListener('DOMContentLoaded', mettreAJourCompteurHeader);
+// Cette fonction compte ce qu'il y a dans le localStorage et change le (0) ou (1) du menu
+function mettreAJourCompteurHeader() {
+    // On récupère le panier actuel
+    const panier = JSON.parse(localStorage.getItem('panier_sarah_mus')) || [];
+    
+    // On calcule le nombre total d'articles
+    const totalArticles = panier.reduce((total, article) => total + article.quantite, 0);
+    
+    // On cherche l'élément du menu dans le HTML (ex: .nb-panier ou #cart-count)
+    const compteurs = document.querySelectorAll('.nb-panier, #cart-count'); 
+    
+    compteurs.forEach(compteur => {
+        compteur.textContent = `(${totalArticles})`;
+    });
+}
+
+// Emplacement magique : Dès qu'une page HTML s'ouvre, elle met à jour son compteur !
+document.addEventListener('DOMContentLoaded', mettreAJourCompteurHeader);

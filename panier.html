@@ -334,6 +334,8 @@
 
     <!-- ================= PARTIE 1 : MON PANIER (HAUT) ================= -->
     <div class="cart-page-container">
+        <div id="articles-panier">
+    </div>
         <div>
             <div class="cart-title">
                 <h2 id="cart-title-count">Mon Panier (0)</h2>
@@ -358,7 +360,9 @@
                     <input type="text" placeholder="Code promo">
                     <button class="btn-outline">Appliquer</button>
                 </div>
-                <button class="btn-outline" onclick="viderLePanier()"><i class="fa-solid fa-trash-can"></i> Vider le panier</button>
+<button onclick="viderLePanier()" style="background: none; border: 1px solid #ccc; padding: 5px 10px; cursor: pointer;">
+    🗑️ Vider le panier
+</button>
             </div>
         </div>
 
