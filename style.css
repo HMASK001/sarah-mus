@@ -1,4 +1,8 @@
 /* Réinitialisation globale */
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
 * {
     margin: 0;
     padding: 0;
@@ -89,7 +93,7 @@ nav ul li a.active {
 /* Hero Section (Image principale de la maquette) */
 .hero {
     height: 80vh;
-    background-image: url('file_0000000095c47243961b2a1764a13215.png'); /* Remplace par ton image style 1000870341.png */
+    background-image: url('file_0000000061a071f4a7699ddc43db3211.png'); /* Remplace par ton image style 1000870341.png */
     background-size: cover;
     background-position: center;
     display: flex;
