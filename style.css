@@ -1,8 +1,5 @@
 /* Réinitialisation globale */
-.container{
-    display: flex;
-    flex-wrap: wrap;
-}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +8,9 @@
 }
 
 body {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #fcfbfa;
     color: #333;
 }
@@ -20,9 +20,9 @@ body {
     background-color: #1a1a1a;
     color: #fff;
     text-align: center;
-    padding: 8px 0;
-    font-size: 11px;
-    letter-spacing: 2px;
+    padding: 8px ;
+    font-size: 10px;
+    letter-spacing: 3px;
 }
 
 /* Header */

@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 const form = document.getElementById('form');
-const submitBtn = form.querySelector('button[type="submit"]');
+if (form){const submitBtn = form.querySelector('button[type="submit"]');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -225,7 +225,7 @@ form.addEventListener('submit', async (e) => {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     }
-});
+    })};
 // 1. Fonction pour initialiser et récupérer le panier actuel
 function obtenirPanier() {
     const panier = localStorage.getItem('panier_sarah_mus');
