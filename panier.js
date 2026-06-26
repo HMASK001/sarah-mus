@@ -94,6 +94,8 @@ function mettreAJourCompteurHeader() {
     const panier = obtenirPanier();
     const totalArticles = panier.reduce((total, item) => total + item.quantite, 0);
     const compteurs = document.querySelectorAll('.nb-panier, #cart-count');
+    const donnees = localStorage.getItem('panier_sarah_mus');
+    console.log("données trouvées dans le panier:",donnees);
     
     compteurs.forEach(el => {
         el.textContent = `(${totalArticles})`;
