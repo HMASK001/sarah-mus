@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 2. Fonction pour lire le panier depuis la mémoire du navigateur
 function obtenirPanier() {
-    const panier = localStorage.getItem('panier_sarah_mus');
+    const panier = localStorage.getItem('sarah_mus_cart');
     return panier ? JSON.parse(panier) : [];
 }
 
@@ -75,7 +75,7 @@ function updatePrices(subtotal, shipping) {
 window.supprimerArticle = function(index) {
     let panier = obtenirPanier();
     panier.splice(index, 1);
-    localStorage.getItem('panier_sarah_mus', JSON.stringify(panier));
+    localStorage.getItem('sarah_mus_cart', JSON.stringify(panier));
     afficherLePanier();
     mettreAJourCompteurHeader();
 };
@@ -83,7 +83,7 @@ window.supprimerArticle = function(index) {
 // 6. Vider tout le panier
 window.viderLePanier = function() {
     if (confirm("Vider tout le panier ?")) {
-        localStorage.removeItem('panier_sarah_mus');
+        localStorage.removeItem('sarah_mus_cart');
         afficherLePanier();
         mettreAJourCompteurHeader();
     }
@@ -94,7 +94,7 @@ function mettreAJourCompteurHeader() {
     const panier = obtenirPanier();
     const totalArticles = panier.reduce((total, item) => total + item.quantite, 0);
     const compteurs = document.querySelectorAll('.nb-panier, #cart-count');
-    const donnees = localStorage.getItem('panier_sarah_mus');
+    const donnees = localStorage.getItem('sarah_mus_cart');
     console.log("données trouvées dans le panier:",donnees);
     
     compteurs.forEach(el => {
