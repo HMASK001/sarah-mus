@@ -75,7 +75,7 @@ function updatePrices(subtotal, shipping) {
 window.supprimerArticle = function(index) {
     let panier = obtenirPanier();
     panier.splice(index, 1);
-    localStorage.setItem('panier_sarah_mus', JSON.stringify(panier));
+    localStorage.getItem('panier_sarah_mus', JSON.stringify(panier));
     afficherLePanier();
     mettreAJourCompteurHeader();
 };
