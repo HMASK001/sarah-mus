@@ -13,8 +13,12 @@ body {
     padding: 0;
     background-color: #fcfbfa;
     color: #333;
+    overflow: hidden;
 }
-
+.container, section{
+    max-width: 100%;
+    box-sizing: border-box;
+}
 /* Bandeau Supérieur */
 .top-bar {
     background-color: #1a1a1a;

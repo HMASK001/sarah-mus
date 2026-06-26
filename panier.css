@@ -1,4 +1,12 @@
 /* Container Général Panier */
+body {
+    overflow: hidden;
+    width: 100%;
+}
+.container, section{
+    max-width: 100%;
+    box-sizing: border-box;
+}
 .cart-container {
     display: flex;
     max-width: 1300px;
